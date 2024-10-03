@@ -1,28 +1,30 @@
-<app-menu></app-menu>
+<app-menu (ActiveChanged)="onSidebarCollapseChanged($event)"></app-menu>
 
-<div class="container">
+<div class="container" [class.active]="isSidebarCollapsed" >
   <!-- Sección izquierda: listas desplegables -->
-  <div class="left-section">
-    <!-- Lista desplegable de usuarios -->
-    <div class="dropdown">
-      <div class="tabla_usuarios">Usuarios</div>
-      <div class="dropdown-content">
-        <div class="table">
-          <table>
-            <thead>
-              <th>Nombre</th>
-              <th>Pais</th>
-            </thead>
-            <tbody>
-              <tr *ngFor="let usuario of filteredUsuarios">
-                <td>{{usuario.name}}</td>
-                <td>{{usuario.country}}</td>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
+  <div class="table-section">
+    <table>
+      <thead>
+        <tr>
+          <th>foto</th>
+          <th>Nombre</th>
+          <th>Pais</th>
+          <th>Pago</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of filteredUsuarios" class="usuario-row">
+          <td>
+            <img *ngIf="usuario.imguser" [src]="usuario.imguser" alt="Foto de {{usuario.name}}" width="50" height="50">
+          </td>
+          <td>{{usuario.name}}</td>
+          <td>{{ usuario.country}}</td>
+          <td>
+            <mat-slide-toggle>Pagar</mat-slide-toggle>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <!-- Sección derecha: gráficos y botones -->

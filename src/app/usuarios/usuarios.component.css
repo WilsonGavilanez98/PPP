@@ -4,7 +4,7 @@
     gap: 10px;
     left: 250px;
     width: calc(90% - 220px);
-    height: 90%;
+    height: 85%;
     position: fixed;
     transition: left 0.3 ease;
     z-index: 1000;

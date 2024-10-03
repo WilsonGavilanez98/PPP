@@ -51,7 +51,7 @@ input[type="password"]
 button {
   width: 100%;
   padding: 12px;
-  background-color: #0b0636;
+  background-color: #212121;
   color: white;
   border: none;
   border-radius: 5px;
@@ -62,5 +62,5 @@ button {
 
 /* Efecto hover para el botón */
 button:hover {
-  background-color: #45a049;
+  background-color: #ffc107;
 }

@@ -18,6 +18,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { FinanzasComponent } from './finanzas/finanzas.component';
 import { BalanceComponent } from './balance/balance.component';
 import { UsuarioNuevoComponent } from './usuario-nuevo/usuario-nuevo.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 
@@ -53,12 +55,14 @@ const firebaseConfig = {
     ReactiveFormsModule,
     HttpClientModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    MatSlideToggleModule
   ],
   providers: [
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })
