@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { firebaseConfig } from './app.module';
+import { getStorage, provideStorage } from '@angular/fire/storage';
 
 
 const routes: Routes = [
@@ -34,7 +35,13 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    provideFirebaseApp(() => initializeApp({"projectId":"moneycup-d4ee8","appId":"1:475047574738:web:d66ac2a9ec683a606a410b","databaseURL":"https://moneycup-d4ee8-default-rtdb.firebaseio.com","storageBucket":"moneycup-d4ee8.appspot.com","apiKey":"AIzaSyCb_YQUzVl_YYwAt7DKmtqNmT6HL3pe71c","authDomain":"moneycup-d4ee8.firebaseapp.com","messagingSenderId":"475047574738","measurementId":"G-F9HER9W2T8"})),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage())
+  ]
 })
 export class AppRoutingModule {}
 

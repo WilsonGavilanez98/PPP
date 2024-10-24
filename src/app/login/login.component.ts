@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { response } from 'express';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
