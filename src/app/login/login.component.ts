@@ -43,9 +43,10 @@ export class LoginComponent {
       const result = await this.authService.loginAndCheckFirestore(email, password);
 
       if (result.authorized) {
-        console.log('Login exitoso y usuario autorizado');
         this.router.navigate(['acceso-r']); // Redirige si todo está bien
+        //alert('exitoso');
       }
+
     } catch (error) {
       if (error instanceof Error) {
         alert('contraseña o correo incorrecto');

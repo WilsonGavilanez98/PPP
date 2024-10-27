@@ -4,6 +4,8 @@
 <div [class.active]="isSidebarCollapsed" class="usuarios-container">
     <h2>USUARIOS MOYCUP</h2>
 
+    <b><p>Total de registros: {{TotalRegistros}}</p></b>
+
     <div class="search-section">
         <!-- Input de nombre -->
         <div class="input-container">
@@ -60,7 +62,6 @@
     </div>
 
     <div class="data-summary">
-        <p>Total de registros: {{TotalRegistros}}</p>
         <p>Total de hombres: {{TotalHombres}}</p>
         <p>Total de mujeres: {{TotalMujeres}}</p>
         <!-- Otros datos -->
@@ -68,7 +69,7 @@
 
     <div class="action-buttons">
         <button routerLink="/analytics">Analisis</button>
-        <button routerLink="/Finanzas">Pagar</button>
+        <button routerLink="/finanzas">Pagar</button>
         <button routerLink="/balance">Balance</button>
         <button>Acción 4</button>
     </div>

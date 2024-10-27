@@ -1,21 +1,31 @@
 <app-menu></app-menu>
 
 <div class="form-container">
-  <h2>Crear Usuario</h2>
-  <form action="#" method="post">
+  <form (ngSubmit)="onSubmit()">
+    <label for="email">CORREO</label>
+    <input type="email" id="email" placeholder="Correo" [(ngModel)]="userData.email" name="email" required />
+    
+    <label for="name">NOMBRE</label>
+    <input type="text" id="name" placeholder="Nombre" [(ngModel)]="userData.displayName" name="displayName" required />
+    
+    <div class="input-container">
+    <label for="password">PASSWORD</label>
+    <input [type]="showPassword ? 'text' : 'password'" id="password" placeholder="Contraseña" [(ngModel)]="userData.password" name="password" required />
+    <i class="fas" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'" (click)="togglePasswordVisibility()"></i>
+    </div>
 
-      <label for="usuario">Usuario:</label>
-      <input type="text" id="usuario" name="usuario" required>
+    <div class="input-container">
+    <label for="confirm-password">CONFIRMAR PASSWORD</label>
+    <input type="password" id="confirm-password" placeholder="Confirmar Contraseña" [(ngModel)]="userData.confirmPassword" name="confirmPassword" required />
+    <i class="fas" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'" (click)="togglePasswordVisibility()"></i>
+    </div>
 
-      <label for="correo">Correo:</label>
-      <input type="email" id="correo" name="correo" required>
+    <label for="photo">FOTO</label>
+    <input type="file" id="photo" (change)="onFileSelected($event)" accept="image/*" />
 
-      <label for="contraseña">Contraseña:</label>
-      <input type="password" id="contraseña" name="contraseña" required>
-
-      <label for="Confirmar contraseña">Confirmar Contraseña:</label>
-      <input type="password" id="contraseña" name="contraseña" required>
-
-      <button type="submit">Crear Usuario</button>
+    <!-- Previsualización de la imagen seleccionada -->
+    <img *ngIf="imagePreview" [src]="imagePreview" alt="Vista previa de la imagen" />
+    
+    <button type="submit">GUARDAR</button>
   </form>
 </div>

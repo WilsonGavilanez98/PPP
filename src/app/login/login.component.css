@@ -145,17 +145,28 @@ body {
 .password-container{
     position: relative;
     width: 100%;
-    background:#f2f2f2 ;
 }
 
 .password-container input{
-    width: calc(100% - 30px);
+    width: 100%;
+    padding-right: 40px; /* Deja espacio para el ícono */
 }
 
 .password-container i {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
+  position: absolute;
+  right: 10px; /* Ajusta según sea necesario */
+  top: 40%;
+  transform: translateY(-50%);
+  cursor: pointer;
 }
+
+.alert {
+    background-color: #4caf50; /* Color verde */
+    color: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+    transition: opacity 0.5s ease; /* Animación de desvanecimiento */
+  }
+  

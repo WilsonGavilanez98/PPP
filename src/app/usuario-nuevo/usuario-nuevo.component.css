@@ -1,66 +1,90 @@
-/* Asegura que el contenido cubra toda la página */
-:host {
+/* Fondo gris oscuro para toda la página */
+.form-container{
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100%;
 }
 
-/* Contenedor del formulario centrado y responsive */
-.form-container {
-  background-color: #ffffff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 90%;
-  max-width: 600px;
+/* Estilo para el contenedor del formulario */
+form {
+  max-width: 400px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-/* Título con más espaciado */
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333;
-  font-size: 24px;
-}
-
-/* Estilos de las etiquetas */
-label {
-  display: block;
-  margin-bottom: 5px;
-  color: #333;
-  font-size: 16px;
-}
-
-/* Estilos para inputs */
+/* Estilo de los inputs del formulario */
 input[type="text"],
 input[type="email"],
-input[type="password"]
- {
+input[type="password"],
+input[type="file"] {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 50px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
   box-sizing: border-box;
-  font-size: 16px;
 }
 
-/* Botón estilizado */
-button {
-  width: 100%;
-  padding: 12px;
-  background-color: #212121;
-  color: white;
+/* Botón de guardar */
+button[type="submit"] {
+  padding: 10px;
+  border-radius: 50px;
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  background: #212121;
+  color: white;
   font-size: 16px;
+  cursor: pointer;
   transition: background-color 0.3s ease;
+  width: 100%;
 }
 
-/* Efecto hover para el botón */
-button:hover {
+button[type="submit"]:hover {
   background-color: #ffc107;
 }
+
+/* Ajustar la imagen de previsualización */
+img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 10px auto;
+  display: block;
+  border: 2px solid #ddd;
+}
+
+/* Ajustar las etiquetas */
+label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  text-align: left;
+  margin-left: 15px;
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+}
+
+.input-container input {
+  width: 100%;
+  padding-right: 40px; /* Deja espacio para el ícono */
+}
+
+.input-container i {
+  position: absolute;
+  right: 10px; /* Ajusta según sea necesario */
+  top: 65%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666; /* Color del ícono */
+}
+
