@@ -89,9 +89,10 @@ export class UsuariosComponent implements OnInit {
 
   calculateSummary() {
     this.TotalRegistros = this.filteredUsuarios.length;
-    this.TotalHombres = this.filteredUsuarios.filter(user => user.sex.toLowerCase() === 'male').length;
-    this.TotalMujeres = this.filteredUsuarios.filter(user => user.sex.toLowerCase() === 'female').length;
+    this.TotalHombres = this.filteredUsuarios.filter(user => user.sex?.toLowerCase() === 'masculino').length;
+    this.TotalMujeres = this.filteredUsuarios.filter(user => user.sex?.toLowerCase() === 'femenino').length;
   }
+  
 
   selectSuggestion(suggestion: any, type: string) {
     if (type === 'name') {
