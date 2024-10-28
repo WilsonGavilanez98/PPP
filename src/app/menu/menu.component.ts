@@ -5,7 +5,7 @@ import { user } from '@angular/fire/auth';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.css'],
 })
 export class MenuComponent {
   isActive = false;
@@ -14,17 +14,17 @@ export class MenuComponent {
   userName: string | null = '';
   userEmail: string | null = '';
 
-  constructor(private authService:AuthService){}
+  constructor(private authService: AuthService) {}
 
   @Output() ActiveChanged = new EventEmitter<boolean>();
 
-  ngOnInit(): void{
-    this.authService.getUserData().subscribe(userData =>{
-      if(userData){
+  ngOnInit(): void {
+    this.authService.getUserData().subscribe((userData) => {
+      if (userData) {
         this.userName = userData.displayName;
         this.userEmail = userData.email;
         this.userPhotoUrl = userData.photoURL;
-      }else{
+      } else {
         this.userName = null;
         this.userEmail = null;
         this.userPhotoUrl = null;
@@ -32,11 +32,9 @@ export class MenuComponent {
     });
   }
 
-  toggleSidebar(){
+  toggleSidebar() {
     this.isActive = !this.isActive;
     this.isCollapsed = this.isActive ? !this.isCollapsed : false; // Alterna entre colapsado y expandido
-    this.ActiveChanged.emit(this.isActive)
+    this.ActiveChanged.emit(this.isActive);
   }
-
-
 }
