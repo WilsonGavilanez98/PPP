@@ -8,6 +8,7 @@ import { AnalyticsComponent } from './analytics/analytics.component';
 import { FinanzasComponent } from './finanzas/finanzas.component';
 import { UsuarioNuevoComponent } from './usuario-nuevo/usuario-nuevo.component';
 import { BalanceComponent } from './balance/balance.component';
+import { Carga3dComponent } from './carga3d/carga3d.component';
 
 
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
     {path: 'analytics', component: AnalyticsComponent},
     {path: 'balance', component: BalanceComponent},
     {path: 'finanzas', component: FinanzasComponent},
-    {path: 'usuario-nuevo', component: UsuarioNuevoComponent}
+    {path: 'usuario-nuevo', component: UsuarioNuevoComponent},
+    {path: 'carga3d', component: Carga3dComponent}
   ];
 
 @NgModule({

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,10 +16,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireModule } from '@angular/fire/compat';
 import { FinanzasComponent } from './finanzas/finanzas.component';
+
 import { BalanceComponent } from './balance/balance.component';
 import { UsuarioNuevoComponent } from './usuario-nuevo/usuario-nuevo.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { Carga3dComponent } from './carga3d/carga3d.component';
+
 
 
 
@@ -46,7 +49,8 @@ const firebaseConfig = {
     AnalyticsComponent,
     FinanzasComponent,
     BalanceComponent,
-    UsuarioNuevoComponent
+    UsuarioNuevoComponent,
+    Carga3dComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +62,7 @@ const firebaseConfig = {
     AngularFireAuthModule,
     MatSlideToggleModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],  // Agrega esta línea
   providers: [
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideAuth(() => getAuth()),

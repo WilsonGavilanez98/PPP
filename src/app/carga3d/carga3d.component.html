@@ -1,0 +1,57 @@
+<app-menu></app-menu>
+
+<div class="main-container">
+  <div class="container">
+    <!-- Columna izquierda: Selección de país, género y carga de archivo -->
+    <div class="selection-container">
+      <label for="country">Seleccione País:</label>
+      <select id="country" [(ngModel)]="selectedCountry" (change)="onCountryChange()" class="styled-select" placeholder="Seleccione">
+        <option value="" disabled selected hidden>Selecciona una opción</option>
+        <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+      </select>
+
+      <label for="gender">Seleccione Sexo:</label>
+      <select id="gender" [(ngModel)]="selectedGender" (change)="onGenderChange()" class="styled-select" placeholder="Seleccione">
+        <option value="" disabled selected hidden>Selecciona una opción</option>
+        <option *ngFor="let gender of genders" [value]="gender">{{ gender }}</option>
+      </select>
+
+      <input type="file" (change)="onFileSelected($event)" #fileInput style="display: none;">
+      <input type="file" id="photo" (change)="onFileSelected($event)" accept="file" />
+      <button (click)="onUpload()" class="button" type="submit">Subir archivo</button>
+    </div>
+
+    <!-- Columna derecha: Visor 3D y carrusel de assets -->
+    <div class="viewer-container">
+      <!-- Visor 3D del asset seleccionado -->
+      <div class="model-viewer-wrapper">
+        <model-viewer
+          [src]="selectedAsset"
+          alt="Modelo 3D seleccionado"
+          ar
+          auto-rotate
+          camera-controls
+          style="width: 100%; height: 300px;">
+        </model-viewer>
+      </div>
+
+      <!-- Carrusel de assets -->
+      <div class="carousel">
+        <div 
+          *ngFor="let asset of assets; let i = index" 
+          (click)="selectedAsset = asset" 
+          [class.active]="selectedAsset === asset"
+          class="carousel-item">
+          <model-viewer
+            [src]="asset"
+            alt="Modelo 3D {{ i + 1 }}"
+            ar
+            auto-rotate
+            camera-controls
+            style="width: 100%; height: 100%;">
+          </model-viewer>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

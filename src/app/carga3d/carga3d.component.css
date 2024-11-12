@@ -1,0 +1,157 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px; /* Espacio entre las dos columnas */
+  padding: 20px;
+  box-sizing: border-box;
+  margin-left: 200px;
+}
+
+.selection-container {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.viewer-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.model-viewer-wrapper {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.carousel {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.carousel-item {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.carousel-item.active {
+  border-color: #007bff; /* Borde para el item seleccionado */
+}
+
+.button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #212121;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+button[type="submit"]:hover {
+  background-color: #ffc107;
+}
+
+/* Contenedor principal que centra todo en la pantalla */
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Contenedor interno con las dos columnas */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f9f9f9; /* Color de fondo opcional */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 800px; /* Tamaño máximo opcional */
+  width: 100%; /* Se adapta al tamaño máximo */
+}
+
+.selection-container {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.viewer-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.model-viewer-wrapper {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.carousel {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.carousel-item {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.carousel-item.active {
+  border-color: #007bff; /* Borde para el item seleccionado */
+}
+
+.styled-select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.styled-select:focus {
+  outline: none;
+  border-color: #007bff; /* Cambia el color del borde al enfocar */
+}
+
+.styled-select option[disabled] {
+  color: #aaa; /* Color del placeholder */
+}
+

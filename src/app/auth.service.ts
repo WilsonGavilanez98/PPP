@@ -128,4 +128,55 @@ export class AuthService {
     }
   }
 
+   // Método para obtener las carpetas de países dentro de "modelos_3d"
+   getCountries(): Observable<string[]> {
+    const path = 'modelos_3d';
+    const ref = this.storage.ref(path);
+
+    return ref.listAll().pipe(
+      map(result => result.prefixes.map(folderRef => folderRef.name))
+    );
+  }
+
+  // Método para obtener las carpetas de género dentro de un país específico
+  getGenders(country: string): Observable<string[]> {
+    const path = `modelos_3d/${country}`;
+    const ref = this.storage.ref(path);
+
+    return ref.listAll().pipe(
+      map(result => result.prefixes.map(folderRef => folderRef.name)) // Extrae nombres de subcarpetas de género
+    );
+  }
+
+  // Método para listar hasta 4 archivos .glb desde Firebase Storage en la ruta especificada
+  get3DAssets(country: string, gender: string): Observable<string[]> {
+    const path = `modelos_3d/${country}/${gender}`;
+    const ref = this.storage.ref(path);
+
+    return ref.listAll().pipe(
+      map(result => result.items.filter(item => item.name.endsWith('.glb')).slice(0, 4)), // Filtra solo archivos .glb y limita a 4
+      switchMap(items => {
+        const urls = items.map(item => item.getDownloadURL());
+        return Promise.all(urls);
+      }),
+      map(urlArray => urlArray as string[])
+    );
+  }
+
+  upload3DAsset(file: File, country: string, gender: string): Observable<string> {
+    const filePath = `modelos_3d/${country}/${gender}/${file.name}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+
+    return new Observable<string>((observer) => {
+        task.snapshotChanges().pipe(
+            finalize(async () => {
+                const downloadURL = await fileRef.getDownloadURL().toPromise();
+                observer.next(downloadURL);
+                observer.complete();
+            })
+        ).subscribe();
+    });
+  }
+
 }
