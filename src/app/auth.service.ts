@@ -163,19 +163,38 @@ export class AuthService {
     );
   }
 
-  upload3DAsset(file: File, country: string, gender: string): Observable<string> {
-    const filePath = `modelos_3d/${country}/${gender}/${file.name}`;
+  upload3DAsset(file: File, country: string, gender: string, position: string): Observable<string> {
+    // Mapeo de posición a código de estado
+    const estadoMapping: { [key: string]: string } = {
+      'reposo': '01R',
+      'activo': '02A',
+      'derrota': '03D',
+      'inactivo': '04I'
+    };
+
+    // Obtiene el código de estado para la posición seleccionada
+    const estado = estadoMapping[position] || '00X'; // Código por defecto si no existe el estado
+
+    // Genera el nombre del archivo usando el país y el estado
+    const fileName = `${country}${estado}.glb`;
+
+    // Construye la ruta completa en Firebase Storage
+    const filePath = `modelos_3d/${country}/${gender}/${fileName}`;
     const fileRef = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
 
     return new Observable<string>((observer) => {
-        task.snapshotChanges().pipe(
-            finalize(async () => {
-                const downloadURL = await fileRef.getDownloadURL().toPromise();
-                observer.next(downloadURL);
-                observer.complete();
-            })
-        ).subscribe();
+      task.snapshotChanges().pipe(
+        finalize(async () => {
+          try {
+            const downloadURL = await fileRef.getDownloadURL().toPromise();
+            observer.next(downloadURL);
+            observer.complete();
+          } catch (error) {
+            observer.error(error);
+          }
+        })
+      ).subscribe();
     });
   }
 

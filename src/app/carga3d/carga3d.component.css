@@ -63,7 +63,7 @@
   text-align: center;
 }
 
-button[type="submit"]:hover {
+button:hover {
   background-color: #ffc107;
 }
 
@@ -153,5 +153,40 @@ button[type="submit"]:hover {
 
 .styled-select option[disabled] {
   color: #aaa; /* Color del placeholder */
+}
+
+/* Estilos para la barra de carga */
+.progress-bar {
+  width: 100%;
+  height: 5px;
+  background-color: #e0e0e0;
+  margin-top: 10px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: #4caf50;
+  transition: width 0.3s ease;
+}
+
+/* Estilo para la alerta de éxito */
+.alert {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  margin-top: 20px;
+  text-align: center;
+  border-radius: 5px;
+  animation: fadeOut 3s forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
 }
 

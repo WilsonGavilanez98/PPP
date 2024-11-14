@@ -5,20 +5,25 @@
     <!-- Columna izquierda: Selección de país, género y carga de archivo -->
     <div class="selection-container">
       <label for="country">Seleccione País:</label>
-      <select id="country" [(ngModel)]="selectedCountry" (change)="onCountryChange()" class="styled-select" placeholder="Seleccione">
+      <select id="country" [(ngModel)]="selectedCountry" (change)="onCountryChange()" class="styled-select">
         <option value="" disabled selected hidden>Selecciona una opción</option>
         <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
       </select>
 
       <label for="gender">Seleccione Sexo:</label>
-      <select id="gender" [(ngModel)]="selectedGender" (change)="onGenderChange()" class="styled-select" placeholder="Seleccione">
+      <select id="gender" [(ngModel)]="selectedGender" (change)="onGenderChange()" class="styled-select">
         <option value="" disabled selected hidden>Selecciona una opción</option>
         <option *ngFor="let gender of genders" [value]="gender">{{ gender }}</option>
       </select>
 
-      <input type="file" (change)="onFileSelected($event)" #fileInput style="display: none;">
-      <input type="file" id="photo" (change)="onFileSelected($event)" accept="file" />
-      <button (click)="onUpload()" class="button" type="submit">Subir archivo</button>
+      <label for="position">Seleccione Posición:</label>
+      <select id="position" [(ngModel)]="selectedPosition" class="styled-select">
+        <option value="" disabled selected hidden>Selecciona una posición</option>
+        <option *ngFor="let pos of positions" [value]="pos.value">{{ pos.label }}</option>
+      </select>
+
+      <input type="file" id="fileInput" (change)="onFileSelected($event)" accept=".glb" />
+      <button (click)="onUpload()" class="button" type="button">Subir archivo</button>
     </div>
 
     <!-- Columna derecha: Visor 3D y carrusel de assets -->
