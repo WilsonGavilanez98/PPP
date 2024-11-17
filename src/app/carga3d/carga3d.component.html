@@ -4,6 +4,11 @@
   <div class="container">
     <!-- Columna izquierda: Selección de país, género y carga de archivo -->
     <div class="selection-container">
+      <!-- Barra de alerta -->
+      <div *ngIf="alertMessage" [ngClass]="alertClass" class="alert-box">
+        {{ alertMessage }}
+      </div>
+
       <label for="country">Seleccione País:</label>
       <select id="country" [(ngModel)]="selectedCountry" (change)="onCountryChange()" class="styled-select">
         <option value="" disabled selected hidden>Selecciona una opción</option>
@@ -24,6 +29,11 @@
 
       <input type="file" id="fileInput" (change)="onFileSelected($event)" accept=".glb" />
       <button (click)="onUpload()" class="button" type="button">Subir archivo</button>
+
+      <!-- Barra de carga -->
+      <div class="progress-container" *ngIf="isUploading">
+        <div class="progress-bar" [style.width.%]="uploadProgress"></div>
+      </div>
     </div>
 
     <!-- Columna derecha: Visor 3D y carrusel de assets -->

@@ -155,31 +155,6 @@ button:hover {
   color: #aaa; /* Color del placeholder */
 }
 
-/* Estilos para la barra de carga */
-.progress-bar {
-  width: 100%;
-  height: 5px;
-  background-color: #e0e0e0;
-  margin-top: 10px;
-}
-
-.progress-bar-fill {
-  height: 100%;
-  background-color: #4caf50;
-  transition: width 0.3s ease;
-}
-
-/* Estilo para la alerta de éxito */
-.alert {
-  background-color: #4caf50;
-  color: white;
-  padding: 10px;
-  margin-top: 20px;
-  text-align: center;
-  border-radius: 5px;
-  animation: fadeOut 3s forwards;
-}
-
 @keyframes fadeOut {
   0% {
     opacity: 1;
@@ -188,5 +163,44 @@ button:hover {
     opacity: 0;
     display: none;
   }
+}
+
+
+/* Barra de carga */
+.progress-container {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 10px;
+  height: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #007bff;
+  width: 0%;
+  transition: width 0.3s ease-in-out;
+}
+
+/* Alertas */
+.alert-box {
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
 }
 

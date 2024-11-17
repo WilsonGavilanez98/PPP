@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-carga3d',
@@ -21,6 +22,10 @@ export class Carga3dComponent implements OnInit {
     { value: 'inactivo', label: 'Inactivo' }
   ]; // Opciones de estados para el archivo
   selectedAsset: string | null = null; // Asset seleccionado para mostrar en el área principal
+  uploadProgress: number = 0; // Porcentaje de progreso
+  isUploading: boolean = false;
+  alertMessage: string | null = null; // Mensaje de la alerta
+  alertClass: string = ''; // Clase CSS para el estilo de la alerta
 
   constructor(private authService: AuthService) {}
 
@@ -65,24 +70,40 @@ export class Carga3dComponent implements OnInit {
   }
 
   onUpload() {
-    // Verificación de depuración de los valores necesarios
-    console.log("País seleccionado:", this.selectedCountry);
-    console.log("Género seleccionado:", this.selectedGender);
-    console.log("Posición seleccionada:", this.selectedPosition);
-    console.log("Archivo seleccionado:", this.selectedFile);
-  
     if (this.selectedFile && this.selectedCountry && this.selectedGender && this.selectedPosition) {
+      this.isUploading = true;
+  
       this.authService.upload3DAsset(this.selectedFile, this.selectedCountry, this.selectedGender, this.selectedPosition)
         .subscribe({
-          next: (url) => {
-            console.log('Archivo disponible en:', url);
-            this.loadAssets(); // Recarga los assets después de subir uno nuevo
+          next: (event) => {
+            if (event.type === 'progress') {
+              this.uploadProgress = Math.round(event.value);
+            } else if (event.type === 'response') {
+              this.isUploading = false;
+              this.uploadProgress = 0;
+              this.showAlert('Archivo subido con éxito.', 'success');
+              this.loadAssets(); // Recarga los assets
+            }
           },
-          error: (err) => console.error('Error al subir el archivo:', err)
+          error: (err) => {
+            console.error('Error al subir el archivo:', err);
+            this.isUploading = false;
+            this.uploadProgress = 0;
+            this.showAlert('Error al subir el archivo.', 'error');
+          }
         });
-    } else {
-      console.warn('Por favor, seleccione país, género, posición y un archivo antes de subir.');
     }
   }
+
+  showAlert(message: string, type: 'success' | 'error') {
+    this.alertMessage = message;
+    this.alertClass = type === 'success' ? 'alert-success' : 'alert-error';
+  
+    // Oculta la alerta después de 5 segundos
+    setTimeout(() => {
+      this.alertMessage = null;
+    }, 5000);
+  }
+  
   
 }
