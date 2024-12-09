@@ -6,12 +6,14 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { map, switchMap } from "rxjs";
 import { finalize } from "rxjs/operators";
 import { AngularFireStorage } from "@angular/fire/compat/storage";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
-    constructor(private firestore: Firestore, private router:Router, private afAuth:AngularFireAuth,private storage: AngularFireStorage,){}
+    constructor(private http: HttpClient, private firestore: Firestore, private router:Router, private afAuth:AngularFireAuth,private storage: AngularFireStorage,){}
 
         getUsers(): Observable<any[]>{
             const usersCollection = collection(this.firestore, 'users');
@@ -209,6 +211,4 @@ export class AuthService {
       ).subscribe();
     });
   }
-  
-
 }
