@@ -22,6 +22,7 @@ import { UsuarioNuevoComponent } from './usuario-nuevo/usuario-nuevo.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { Carga3dComponent } from './carga3d/carga3d.component';
+import { PagarModalComponent } from './pagar-modal/pagar-modal.component';
 
 
 
@@ -50,7 +51,8 @@ const firebaseConfig = {
     FinanzasComponent,
     BalanceComponent,
     UsuarioNuevoComponent,
-    Carga3dComponent
+    Carga3dComponent,
+    PagarModalComponent
   ],
   imports: [
     BrowserModule,

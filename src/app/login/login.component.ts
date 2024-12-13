@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { response } from 'express';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -14,7 +14,7 @@ export class LoginComponent {
 
   formLogin: FormGroup;
 
-  constructor(private router: Router,private authService: AuthService){
+  constructor(private router: Router,private authService: AuthService,private snackBar: MatSnackBar ){
     this.formLogin = new FormGroup({
       email: new FormControl('',[Validators.required, Validators.email]),
       password: new FormControl('',[Validators.required])
@@ -44,12 +44,19 @@ export class LoginComponent {
 
       if (result.authorized) {
         this.router.navigate(['acceso-r']); // Redirige si todo está bien
-        //alert('exitoso');
+
+        // Muestra el mensaje de éxito con el snackBar
+        this.snackBar.open('Inicio de sesión exitoso', 'Cerrar', {
+          duration: 3000, // Duración en milisegundos (3 segundos)
+          horizontalPosition: 'center', // Posición horizontal
+          verticalPosition: 'top', // Posición vertical
+          panelClass: ['snackbar-success'], // Clase CSS personalizada (opcional)
+        });
       }
 
     } catch (error) {
       if (error instanceof Error) {
-        alert('contraseña o correo incorrecto');
+        alert('Contraseña o correo incorrecto');
       } else {
         alert('Ha ocurrido un error desconocido');
       }

@@ -103,4 +103,13 @@ td {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.pagado {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.chart {
+  margin-bottom: 20px;
+}
+
 

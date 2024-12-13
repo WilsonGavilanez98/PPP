@@ -160,13 +160,10 @@ body {
   cursor: pointer;
 }
 
-.alert {
-    background-color: #4caf50; /* Color verde */
+.snackbar-success {
+    background-color: #4caf50; /* Color verde para éxito */
     color: white;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    text-align: center;
-    transition: opacity 0.5s ease; /* Animación de desvanecimiento */
+    font-size: 16px;
   }
+  
   

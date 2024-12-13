@@ -1,0 +1,42 @@
+.modal-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .user-info {
+    margin: 20px 0;
+    text-align: center;
+  }
+  
+  .user-info img {
+    width: 100px;   /* Tamaño fijo de la imagen */
+    height: 100px;  /* Tamaño fijo de la imagen */
+    border-radius: 50%; /* Hace la imagen circular */
+    object-fit: cover; /* Asegura que la imagen no se distorsione */
+    margin-bottom: 15px;
+  }
+  
+  .user-info p {
+    margin: 5px 0;
+    font-size: 16px;
+  }
+  
+  
+  .modal-actions button {
+    margin: 10px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .modal-actions button:first-child {
+    background-color: #ddd;
+    color: #333;
+  }
+  
+  .modal-actions button:last-child {
+    background-color: #4caf50;
+    color: #fff;
+  }
+  

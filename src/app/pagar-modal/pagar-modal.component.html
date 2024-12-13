@@ -1,0 +1,18 @@
+<app-menu (ActiveChanged)="onSidebarCollapseChanged($event)"></app-menu>
+<div class="modal-container">
+    <h2>Información del Usuario</h2>
+    <div class="user-info">
+      <img *ngIf="data.imguser" [src]="data.imguser" alt="Foto de {{data.name}}" width="100" />
+      <p><strong>Nombre:</strong> {{ data.name }}</p>
+      <p><strong>País:</strong> {{ data.country }}</p>
+      <p><strong>Banco:</strong> {{ data.vali_pago.banco }}</p>
+      <p><strong>Número de Cuenta:</strong> {{ data.vali_pago.numero_cuenta }}</p>
+      <p><strong>tipo de Cuenta:</strong> {{ data.vali_pago.tipo_cuenta }}</p>
+      <p><strong>Monto:</strong> {{ data.monto }}</p>
+    </div>
+    <div class="modal-actions">
+      <button (click)="cerrar()">Cancelar</button>
+      <button (click)="confirmarPago()">Confirmar Pago</button>
+    </div>
+  </div>
+  

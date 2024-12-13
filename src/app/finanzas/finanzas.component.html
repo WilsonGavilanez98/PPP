@@ -13,14 +13,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let usuario of filteredUsuarios" class="usuario-row">
+        <tr *ngFor="let usuario of usuarios" [class.pagado]="usuario.pagado" class="usuario-row">
           <td>
             <img *ngIf="usuario.imguser" [src]="usuario.imguser" alt="Foto de {{usuario.name}}" width="50" height="50">
           </td>
           <td>{{usuario.name}}</td>
           <td>{{ usuario.country}}</td>
           <td>
-            <mat-slide-toggle color="primary">Pagar</mat-slide-toggle>
+            <button class="btn" (click)="abrirModal(usuario)" [disabled]="usuario.pagado">Pagar</button>
           </td>
         </tr>
       </tbody>
@@ -35,13 +35,13 @@
         <div class="chart">
           <h4>Monto a pagar</h4>
           <!-- Aquí iría el gráfico -->
-          <div class="circle">Gráfico</div>
+          <div id="chartMontoPagar" style="width: 100%; height: 300px;"></div>
         </div>
 
         <div class="chart">
           <h4>Monto general</h4>
           <!-- Aquí iría el gráfico -->
-          <div class="circle">Gráfico</div>
+          <div id="chartMontoGeneral" style="width: 100%; height: 300px;"></div>
         </div>
       </div>
     </div>
@@ -49,7 +49,6 @@
     <!-- Botones de acciones -->
     <div class="buttons">
       <button class="btn">Consultar</button>
-      <button class="btn">Pagar</button>
     </div>
   </div>
 
